@@ -9,7 +9,7 @@ from Dec2Hex import decimal_to_hex
 class TestDecimalToHex(unittest.TestCase):
     
     def test_valid_decimal(self):
-        # Test with a valid decimal value
+        # Test with a valid decimal value.
         decimal_value = 255
         expected_output = "FF"
         
