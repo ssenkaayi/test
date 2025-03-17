@@ -4,7 +4,7 @@ import sys
 from Dec2Hex import decimal_to_hex
 
 # Assuming the decimal_to_hex function is in the same file, if not, import it like this:
-# from your_module import decimal_to_hex
+# from your_module import decimal_to_hex.
 
 class TestDecimalToHex(unittest.TestCase):
     
