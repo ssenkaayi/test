@@ -1,11 +1,7 @@
 import sys
 
 def decimal_to_hex(decimal_value):
-    if not isinstance(decimal_value, int):
-        raise TypeError("Input must be an integer") # Check Input value only integer numbers.
-
-    if decimal_value<1:
-        return print("Please provide Decimal value greater than 0") # Check Input value greater than 0 
+    
      
     hex_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
     hexadecimal = ""
@@ -30,4 +26,4 @@ if __name__ == "__main__":
             print("Please provide a valid integer.")
     else:
          print("Error: No input provided. Please provide a decimal number.")
-         sys.exit(1)
+         
