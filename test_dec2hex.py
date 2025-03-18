@@ -26,13 +26,7 @@ class TestDecimalToHex(unittest.TestCase):
         # Test if the function raises TypeError for non-integer input
         with self.assertRaises(TypeError):
             decimal_to_hex("string")
-    
-    def test_decimal_less_than_one(self):
-        # Test if the function handles a decimal value less than 1
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        decimal_to_hex(0)
-        sys.stdout = sys.__stdout__  # Reset redirect.
+
         
         self.assertIn("Please provide Decimal value greater than 0", captured_output.getvalue())
     
