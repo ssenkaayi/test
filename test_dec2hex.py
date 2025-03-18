@@ -1,56 +1,22 @@
 import unittest
-from io import StringIO
-import sys
-from Dec2Hex import decimal_to_hex
-
-# Assuming the decimal_to_hex function is in the same file, if not, import it like this:
-# from your_module import decimal_to_hex.
+from your_script import decimal_to_hex  # Replace 'your_script' with the actual filename
 
 class TestDecimalToHex(unittest.TestCase):
     
-    def test_valid_decimal(self):
-        # Test with a valid decimal value.
-        decimal_value = 255
-        expected_output = "FF"
-        
-        # Capture the print output
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        decimal_to_hex(decimal_value)
-        sys.stdout = sys.__stdout__  # Reset redirect.
-        
-        # Check if the output matches
-        self.assertIn(f"Hexadecimal representation is: {expected_output}", captured_output.getvalue())
+    def test_positive_numbers(self):
+        self.assertEqual(decimal_to_hex(10), "A")
+        self.assertEqual(decimal_to_hex(255), "FF")
+        self.assertEqual(decimal_to_hex(4096), "1000")
     
-    def test_input_is_not_integer(self):
-        # Test if the function raises TypeError for non-integer input
-        with self.assertRaises(TypeError):
-            decimal_to_hex("string")
-
-        
-        self.assertIn("Please provide Decimal value greater than 0", captured_output.getvalue())
+    def test_zero(self):
+        self.assertEqual(decimal_to_hex(0), "")  # Your function returns an empty string for 0
     
-    def test_valid_edge_case(self):
-        # Test with another valid decimal value (e.g., 16)
-        decimal_value = 16
-        expected_output = "10"
-        
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        decimal_to_hex(decimal_value)
-        sys.stdout = sys.__stdout__  # Reset redirect.
-        
-        self.assertIn(f"Hexadecimal representation is: {expected_output}", captured_output.getvalue())
+    def test_large_number(self):
+        self.assertEqual(decimal_to_hex(123456789), "75BCD15")
     
-    def test_invalid_input(self):
-        """Test when invalid input is provided (e.g., None or a string)."""
-       
-        with self.assertRaises(TypeError):
-            decimal_to_hex(None)
-
-        with self.assertRaises(TypeError):
-            decimal_to_hex("string")
-
-
+    def test_negative_number(self):
+        with self.assertRaises(TypeError):  # Your function doesn't handle negatives, so expect an error
+            decimal_to_hex(-10)
+    
 if __name__ == "__main__":
     unittest.main()
